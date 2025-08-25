@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adithya Murali Reddy Velagala | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    :root {
+  --bg: #0b0b12;
+  --surface: #121226;
+  --surface-2: #17172e;
+  --text: #e8e8ef;
+  --muted: #a7a7c2;
+  --primary: #7c5cff;
+  --secondary: #3bc7ff;
+  --accent: #ffd166;
+  --ring: #7c5cff55;
+  --shadow: 0 10px 25px rgba(0,0,0,.35);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --maxw: 1120px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+a{
+    text-decoration: none;
+    color: rgb(65, 65, 148);
+}
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 15% -10%, #2a1a7a44, transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, #006eff3a, transparent 50%),
+    linear-gradient(180deg, #0b0b12, #0b0b12 30%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+.btn { display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.2rem; border-radius: 999px; border: 1px solid transparent; font-weight:600; cursor:pointer; text-decoration:none; transition: .25s ease; box-shadow: var(--shadow); }
+.btn.primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #06060f; }
+.btn.primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--text); border-color: #ffffff22; }
+.btn.ghost:hover { border-color: #ffffff55; transform: translateY(-2px); }
+.chip { display:inline-block; padding:.35rem .7rem; border-radius:999px; font-size:.78rem; background:#ffffff10; border:1px solid #ffffff1a; color:var(--muted); }
+
+.section-title { font-size: clamp(1.6rem, 1.2rem + 2vw, 2.2rem); margin: 0 0 1.4rem; letter-spacing: .3px; }
+.section-sub { color: var(--muted); margin: 0 0 2.2rem; }
+
+header { position: sticky; top: 0; z-index: 40; backdrop-filter: blur(10px); background: linear-gradient(180deg, #06060fbb, #06060f66 60%, transparent); border-bottom: 1px solid #ffffff0f; }
+.nav { display:flex; align-items:center; justify-content: space-between; padding: 14px 0; }
+.brand { display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.3px; }
+.brand .dot { width: 10px; height: 10px; border-radius:50%; background: radial-gradient(circle at 30% 30%, var(--secondary), var(--primary)); box-shadow: 0 0 28px var(--ring); }
+.nav-links { display:flex; gap: 1rem; }
+.nav-links a { color: var(--muted); text-decoration:none; padding:.5rem .8rem; border-radius:10px; transition:.2s; }
+.nav-links a:hover { color:var(--text); background:#ffffff0e; }
+.hamburger { display:none; background:#ffffff10; border:1px solid #ffffff1a; border-radius:10px; padding:.6rem .7rem; cursor:pointer; }
+
+@media (max-width: 860px) {
+  .nav-links { display:none; position: absolute; top: 60px; right: 20px; background: #0d0d1b; border:1px solid #ffffff1a; border-radius: 14px; padding: .6rem; box-shadow: var(--shadow); }
+  .nav-links.open { display:flex; flex-direction:column; min-width: 200px; }
+  .hamburger { display:block; }
+}
+
+.hero { padding: 80px 0 40px; }
+.hero .wrap { display:grid; grid-template-columns: 1.2fr .9fr; gap: 36px; align-items:center; }
+.kicker { color: var(--secondary); font-weight:700; letter-spacing:.2em; font-size:.8rem; text-transform:uppercase; }
+.title { font-size: clamp(2.2rem, 1.6rem + 3vw, 3.3rem); font-weight: 800; line-height:1.1; margin:.8rem 0; }
+.title span { background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { color: var(--muted); font-size: 1.05rem; max-width: 46ch; }
+.cta { display:flex; gap:.8rem; margin-top: 1.4rem; flex-wrap:wrap; }
+
+
+
+/* 🔹 Updated image styling (only change requested) */
+/* Default (mobile + tablet) */
+.portrait {
+  display: flex;
+  justify-content: center; /* center image on small screens */
+  margin-top: 20px;
+}
+.portrait img {
+  position: relative;
+  z-index: 1;
+  width: 500px;      /* smaller for mobile */
+  height: 500px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ffffff1a;
+  box-shadow: 0 20px 60px #00000066;
+}
+
+
+@media (min-width: 861px) {
+  .hero .wrap {
+    grid-template-columns: 1fr auto; /* intro left, image right */
+  }
+  .portrait {
+    display: flex;
+    justify-content: flex-end; /* push image to right side of page */
+    margin-top: 0;
+  }
+  .portrait img {
+    width: 450px;     /* bigger on desktop */
+    height: 450px;
+  }
+}
+.card { background: linear-gradient(180deg, #0e0e21, #0b0b14); border:1px solid #ffffff10; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+
+.skills-grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.skill { grid-column: span 6; background: var(--surface); border:1px solid #ffffff10; border-radius: var(--radius-sm); padding: 16px; transition:.25s; }
+.skill:hover { transform: translateY(-4px); box-shadow: 0 16px 50px #00000070; }
+.skill header { display:flex; align-items:center; justify-content:space-between; margin-bottom: 10px; }
+.skill header .name { font-weight: 600; }
+.meter { height: 10px; background:#ffffff12; border-radius:999px; overflow:hidden; }
+.meter > .bar { height:100%; width:0; background: linear-gradient(90deg, var(--primary), var(--secondary)); box-shadow: 0 0 0 6px #0000; transition: width 1.2s cubic-bezier(.22,.61,.36,1); }
+@media (max-width: 860px) { .skill { grid-column: span 12; } }
+
+.projects-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.project { position:relative; overflow:hidden; border-radius: 16px; background: #0f0f1e; border:1px solid #ffffff12; box-shadow: var(--shadow); }
+.project img { width: 100%; height: 200px; object-fit: cover; display:block; filter: saturate(1.05); }
+.project .body { padding: 16px; }
+.project h3 { margin: 2px 0 6px; font-size: 1.1rem; }
+.project p { color: var(--muted); margin: 0 0 10px; }
+.tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.actions { display:flex; gap:8px; }
+.project:hover { transform: translateY(-4px); }
+
+@media (max-width: 1024px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px)  { .projects-grid { grid-template-columns: 1fr; } }
+
+.contact { display:grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
+.contact .info { background: var(--surface); border:1px solid #ffffff12; border-radius: var(--radius); padding: 22px; }
+.contact .info .row { display:flex; gap: 12px; align-items:center; margin: 8px 0; color: var(--muted); }
+.contact form { background: var(--surface); border:1px solid #ffffff12; border-radius: var(--radius); padding: 22px; display:grid; gap:12px; }
+.field { display:grid; gap:6px; }
+.field label { font-size:.9rem; color: var(--muted); }
+.field input, .field textarea { background:#0d0d1b; border:1px solid #ffffff10; border-radius: 12px; padding: 12px 14px; color: var(--text); outline:none; transition:.2s; }
+.field input:focus, .field textarea:focus { border-color: var(--ring); box-shadow: 0 0 0 6px var(--ring); }
+.status { min-height: 20px; color: var(--muted); font-size:.9rem; }
+@media (max-width: 900px) { .contact { grid-template-columns: 1fr; } }
+
+footer { color: #8a8aa5; text-align:center; padding: 34px 0 60px; }
+
+.reveal { opacity: 0; transform: translateY(18px); transition: .8s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+  </style>
+</head>
+<body>
+  <!-- Rest of your HTML content remains exactly the same -->
+  <!-- ... -->
+   <header>
+    <div class="container nav">
+      <div class="brand"><span class="dot"></span> <span>Adithya Murali Reddy Velagala</span></div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="container wrap">
+      <div class="wrap">
+        <div>
+          <div class="kicker">Data • Code • Design</div>
+          <h1 class="title">Hi, I'm <span>Adithya Murali Reddy Velagala</span></h1>
+          <p class="lead">Data Analyst & Python/Frontend developer who loves turning messy data into clear decisions and crafting fast, delightful interfaces.</p>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Hire Me</a>
+            <a class="btn ghost" href="resume.pdf" download>Download CV</a>
+          </div>
+        </div>
+        <div class="portrait">
+          <div class="glow"></div>
+          <!-- Replace images/profile.jpg with your real photo path -->
+          <img src="pic.jpg" id="img1" alt="Portrait of Adithya" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="container reveal">
+    <div class="card">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-sub">Curious, collaborative, and relentlessly practical.</p>
+      <p>
+        I'm an enthusiastic and motivated analyst-engineer hybrid with a strong focus on
+        <b>Python</b>, <b>SQL</b>, and <b>modern frontend</b>. I enjoy building clean data pipelines,
+        visualizing insights that influence decisions, and shipping polished UIs.
+        I value good naming, small iterations, and helpful documentation. When I'm not coding,
+        you'll find me exploring new datasets, sketching UI ideas, or helping friends debug.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="container reveal" style="margin-top:28px;">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-sub">A quick snapshot of tools I use and enjoy.</p>
+
+    <div class="skills-grid">
+      <div class="skill">
+        <header><span class="name">Python</span><span class="chip">Advanced</span></header>
+        <div class="meter"><div class="bar" data-w="92"></div></div>
+      </div>
+      <div class="skill">
+        <header><span class="name">SQL</span><span class="chip">Strong</span></header>
+        <div class="meter"><div class="bar" data-w="85"></div></div>
+      </div>
+      <div class="skill">
+        <header><span class="name">JavaScript</span><span class="chip">Strong</span></header>
+        <div class="meter"><div class="bar" data-w="82"></div></div>
+      </div>
+      <div class="skill">
+        <header><span class="name">HTML & CSS</span><span class="chip">Strong</span></header>
+        <div class="meter"><div class="bar" data-w="88"></div></div>
+      </div>
+      <div class="skill">
+        <header><span class="name">Pandas & Matplotlib</span><span class="chip">Proficient</span></header>
+        <div class="meter"><div class="bar" data-w="80"></div></div>
+      </div>
+      <div class="skill">
+        <header><span class="name">Git & GitHub</span><span class="chip">Proficient</span></header>
+        <div class="meter"><div class="bar" data-w="78"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="container reveal" style="margin-top:28px;">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-sub">Clear write‑ups. Useful links. Real results.</p>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <article class="project">
+        <img src="Stock_Price_Prediction.jpg" alt="Analytics dashboard preview" />
+        <div class="body">
+          <h3>Real Time Stock Price Prediction</h3>
+          <p>Developed a real-time stock price prediction model using advanced machine learning algorithms to analyze historical market data, forecast future trends, and provide accurate insights to support investment decisions and optimize trading strategies effectively.</p>
+          <div class="tags">
+            <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Charts</span>
+          </div>
+          <div class="actions">
+            <!--<a class="btn ghost" href="#" target="_blank">Live Demo</a>-->
+            <a class="btn primary" href="https://github.com/1319amj-adithya/Real_Time_Stock_PricePrediction" target="_blank">Source Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project">
+        <img src="benefits-of-ai-chatbot.jpg" alt="Portfolio site preview" />
+        <div class="body">
+          <h3>Chat-Bot for Educational Purpose</h3>
+          <p>An educational chatbot is an interactive, AI-powered tool designed to assist students, teachers, and learners in the learning process. It can answer questions, provide explanations, and guide users through complex topics in a conversational format.</p>
+          <div class="tags">
+            <span class="chip">PYTHON</span><span class="chip">HTML</span><span class="chip">JavaScript</span>
+          </div>
+          <div class="actions">
+            <!--<a class="btn ghost" href="#" target="_blank">Live Demo</a>-->
+            <a class="btn primary" href="https://github.com/1319amj-adithya/Chat_Bot_For_EducationalPurpose" target="_blank">Source Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project">
+        <img src="login1.jpg" alt="Database schema sketch" />
+        <div class="body">
+          <h3>Simple Login Page</h3>
+          <p>A simple login page is a secure entry point that allows users to access an application by entering a username and password. It validates the credentials against stored data and either grants access or displays an error message. This ensures only authorized users</p>
+          <div class="tags">
+            <span class="chip">FLASK</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+          </div>
+          <div class="actions">
+            <!--<a class="btn ghost" href="#" target="_blank">Schema</a>-->
+            <a class="btn primary" href="https://github.com/1319amj-adithya/Simple_Login_Page" target="_blank">Source Code</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="container reveal" style="margin-top:28px;">
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-sub">Let's talk about data, dashboards, or your next web idea.</p>
+
+    <div class="contact">
+      <div class="info">
+        <h3 style="margin-top:0">Contact Info</h3>
+        <div class="row">📍 <a href="https://www.google.com/maps/place/Tadepalligudem,+Andhra+Pradesh" target="_blank">Tadepalligudem, India</a></div>
+        <div class="row">✉️ <a href="mailto:1319amj@gmail.com" style="color:var(--text); text-decoration:none;">1319amj@gmail.com</a></div>
+        <div class="row">📞 <a href="tel:+917799190303" style="color:var(--text); text-decoration:none;">+91 7799190303</a></div>
+        <div class="row">🌐 <a href="https://github.com/1319amj-adithya" target="_blank" style="color:var(--text); text-decoration:none;">GitHub</a></div> 
+        <div class="row"> 🔗<a href="https://www.linkedin.com/in/adithyareddy19/" target="_blank" style="color:var(--text); text-decoration:none;">LinkedIn</a></div>
+      </div>
+
+      <form id="contactForm">
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me a little about your project…" required></textarea>
+        </div>
+        <div class="status" id="formStatus"></div>
+        <button type="submit" class="btn primary" style="border:none;">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="container">
+    <p>© <span id="year"></span> Adithya Murali Reddy Velagala. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ===== Mobile nav =====
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    // ===== Scroll reveal =====
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          // animate skill meters when skills section appears
+          if (e.target.id === 'skills') {
+            document.querySelectorAll('.meter .bar').forEach(bar => {
+              const width = bar.getAttribute('data-w');
+              requestAnimationFrame(() => bar.style.width = width + '%');
+            });
+          }
+        }
+      });
+    }, { threshold: 0.18 });
+    revealEls.forEach(el => io.observe(el));
+
+    // ===== Footer year =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== EmailJS (client-side email) =====
+    // 1) Create a free account at https://www.emailjs.com/
+    // 2) Add an Email Service + Template
+    // 3) Replace YOUR_PUBLIC_KEY, YOUR_SERVICE_ID, YOUR_TEMPLATE_ID below
+   (function () {
+  emailjs.init("5jRzbymrO9eMaWz73"); // ✅ replace this with your Public Key from EmailJS
+})();
+
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const feedback = document.getElementById("formStatus"); // ✅ matches your HTML
+
+  feedback.textContent = "⏳ Sending...";
+
+  emailjs.send("service_9ldyf7d", "template_uk69jly", {
+    from_name: form.name.value,
+    reply_to: form.email.value,
+    message: form.message.value
+  })
+  .then(() => {
+    feedback.textContent = "✅ Thanks! Your message has been sent.";
+    feedback.style.color = "green"; // ✅ success in green
+    form.reset();
+  })
+  .catch((error) => {
+    console.error("EmailJS Error:", error);
+    feedback.textContent = "❌ Sorry, something went wrong. Please try again later.";
+    feedback.style.color = "red"; // ❌ error in red
+  });
+});
+
+
+  </script>
+</body>
+</html>
